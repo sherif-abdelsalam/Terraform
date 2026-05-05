@@ -35,6 +35,10 @@ resource "aws_instance" "bastion" {
   tags = {
     Name = "bastion"
   }
+
+  provisioner "local-exec" {
+    command = "echo Bastion Public IP: ${self.public_ip}"
+  }
 }
 
 # 8- create ec2(application) private subnet with security group from 8
